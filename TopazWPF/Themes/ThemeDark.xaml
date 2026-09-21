@@ -1,0 +1,331 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         DARK THEME
+         ═══════════════════════════════════════════════════════════════ -->
+
+
+    <!-- Animation tokens -->
+    <Duration x:Key="Theme.Animation.Fast">0:0:0.12</Duration>
+    <Duration x:Key="Theme.Animation.Normal">0:0:0.18</Duration>
+    <CubicEase x:Key="Theme.Ease.Out" EasingMode="EaseOut"/>
+
+<!-- #region SEMANTICS -->
+    <!-- DEFAULT -->
+    <Color       x:Key="Theme.Default.Base">#35353B</Color>
+    <Color      x:Key="Theme.Default.Hover">#45454D</Color>
+    <Color    x:Key="Theme.Default.Pressed">#28282E</Color>
+    <Color    x:Key="Theme.Default.Lighter">#6B6B75</Color>
+    <Color      x:Key="Theme.Default.Light">#55555F</Color>
+    <Color       x:Key="Theme.Default.Dark">#25252A</Color>
+    <Color     x:Key="Theme.Default.Darker">#1A1A1E</Color>
+    <Color  x:Key="Theme.Default.Subtle25">#BF35353B</Color>
+    <Color  x:Key="Theme.Default.Subtle50">#8035353B</Color>
+    <Color  x:Key="Theme.Default.Subtle75">#4035353B</Color>
+    
+    <!-- SUCCESS -->
+    <Color       x:Key="Theme.Success.Base">#51CF66</Color>
+    <Color      x:Key="Theme.Success.Hover">#62E077</Color>
+    <Color    x:Key="Theme.Success.Pressed">#40B855</Color>
+    <Color    x:Key="Theme.Success.Lighter">#A3E7B0</Color>
+    <Color      x:Key="Theme.Success.Light">#78F08A</Color>
+    <Color       x:Key="Theme.Success.Dark">#38A34A</Color>
+    <Color     x:Key="Theme.Success.Darker">#2A7A37</Color>
+    <Color  x:Key="Theme.Success.Subtle25">#BF51CF66</Color>
+    <Color  x:Key="Theme.Success.Subtle50">#8051CF66</Color>
+    <Color  x:Key="Theme.Success.Subtle75">#4051CF66</Color>
+
+    <!-- WARNING -->
+    <Color       x:Key="Theme.Warning.Base">#D07050</Color>
+    <Color      x:Key="Theme.Warning.Hover">#E08160</Color>
+    <Color    x:Key="Theme.Warning.Pressed">#C05F40</Color>
+    <Color    x:Key="Theme.Warning.Lighter">#F4C5B0</Color>
+    <Color      x:Key="Theme.Warning.Light">#F09A78</Color>
+    <Color       x:Key="Theme.Warning.Dark">#A8503C</Color>
+    <Color     x:Key="Theme.Warning.Darker">#803C2D</Color>
+    <Color  x:Key="Theme.Warning.Subtle25">#BFD07050</Color>
+    <Color  x:Key="Theme.Warning.Subtle50">#80D07050</Color>
+    <Color  x:Key="Theme.Warning.Subtle75">#40D07050</Color>
+
+    <!-- ERROR -->
+    <Color       x:Key="Theme.Error.Base">#E74C3C</Color>
+    <Color      x:Key="Theme.Error.Hover">#F85D4D</Color>
+    <Color    x:Key="Theme.Error.Pressed">#D63B2B</Color>
+    <Color    x:Key="Theme.Error.Lighter">#FFB3A8</Color>
+    <Color      x:Key="Theme.Error.Light">#FF7A68</Color>
+    <Color       x:Key="Theme.Error.Dark">#C23828</Color>
+    <Color     x:Key="Theme.Error.Darker">#942A1F</Color>
+    <Color  x:Key="Theme.Error.Subtle25">#BFE74C3C</Color>
+    <Color  x:Key="Theme.Error.Subtle50">#80E74C3C</Color>
+    <Color  x:Key="Theme.Error.Subtle75">#40E74C3C</Color>
+
+    <!-- PRIMARY -->
+    <Color       x:Key="Theme.Primary.Base">#2A7AE2</Color>
+    <Color      x:Key="Theme.Primary.Hover">#3B8BF2</Color>
+    <Color    x:Key="Theme.Primary.Pressed">#1E66C4</Color>
+    <Color    x:Key="Theme.Primary.Lighter">#85BFFF</Color>
+    <Color      x:Key="Theme.Primary.Light">#4D9BFF</Color>
+    <Color       x:Key="Theme.Primary.Dark">#1E5AB8</Color>
+    <Color     x:Key="Theme.Primary.Darker">#15428A</Color>
+    <Color  x:Key="Theme.Primary.Subtle25">#BF2A7AE2</Color>
+    <Color  x:Key="Theme.Primary.Subtle50">#802A7AE2</Color>
+    <Color  x:Key="Theme.Primary.Subtle75">#402A7AE2</Color>
+
+    <!-- SECONDARY -->
+    <Color       x:Key="Theme.Secondary.Base">#8B5CF6</Color>
+    <Color      x:Key="Theme.Secondary.Hover">#9D6DFF</Color>
+    <Color    x:Key="Theme.Secondary.Pressed">#7446D8</Color>
+    <Color    x:Key="Theme.Secondary.Lighter">#D4BBFF</Color>
+    <Color      x:Key="Theme.Secondary.Light">#B08CFF</Color>
+    <Color       x:Key="Theme.Secondary.Dark">#6938C4</Color>
+    <Color     x:Key="Theme.Secondary.Darker">#4F2994</Color>
+    <Color  x:Key="Theme.Secondary.Subtle25">#BF8B5CF6</Color>
+    <Color  x:Key="Theme.Secondary.Subtle50">#808B5CF6</Color>
+    <Color  x:Key="Theme.Secondary.Subtle75">#408B5CF6</Color>
+
+    <!-- TERTIARY -->
+    <Color       x:Key="Theme.Tertiary.Base">#E28A2A</Color>
+    <Color      x:Key="Theme.Tertiary.Hover">#F59C3C</Color>
+    <Color    x:Key="Theme.Tertiary.Pressed">#C4741E</Color>
+    <Color    x:Key="Theme.Tertiary.Lighter">#FFD49C</Color>
+    <Color      x:Key="Theme.Tertiary.Light">#FFB35C</Color>
+    <Color       x:Key="Theme.Tertiary.Dark">#B86820</Color>
+    <Color     x:Key="Theme.Tertiary.Darker">#8A4E18</Color>
+    <Color  x:Key="Theme.Tertiary.Subtle25">#BFE28A2A</Color>
+    <Color  x:Key="Theme.Tertiary.Subtle50">#80E28A2A</Color>
+    <Color  x:Key="Theme.Tertiary.Subtle75">#40E28A2A</Color>
+<!--#endregion-->
+    
+    <!-- SURFACE -->
+    <Color x:Key="Theme.Surface.Darkest">#0A0A13</Color>
+    <Color    x:Key="Theme.Surface.Dark">#1E1E22</Color>
+    <Color     x:Key="Theme.Surface.Dim">#222226</Color>
+    <Color x:Key="Theme.Surface.Pressed">#2A2A30</Color>
+    <Color    x:Key="Theme.Surface.Base">#30303A</Color>
+    <Color  x:Key="Theme.Surface.Raised">#35353B</Color>
+    <Color   x:Key="Theme.Surface.Hover">#38383E</Color>
+    <Color   x:Key="Theme.Surface.Popup">#252528</Color>
+    <Color  x:Key="Theme.Surface.Chrome">#212130</Color>
+
+    <!-- BORDERS -->
+    <Color    x:Key="Theme.Border.Subtle">#2A2A2E</Color>
+    <Color   x:Key="Theme.Border.Default">#3E3E44</Color>
+    <Color     x:Key="Theme.Border.Hover">#5A5A64</Color>
+    <Color    x:Key="Theme.Border.Strong">#6A6A74</Color>
+    <Color x:Key="Theme.Border.Separator">#2E2E34</Color>
+
+    <!-- TEXT -->
+    <Color        x:Key="Theme.Text.Default">#E4E4E8</Color>
+    <Color      x:Key="Theme.Text.Alternate">#C8C8D0</Color>
+    <Color            x:Key="Theme.Text.Dim">#9A9AA4</Color>
+    <Color          x:Key="Theme.Text.Muted">#5A5A64</Color>
+    <Color          x:Key="Theme.Text.OnSurface">#3A3A44</Color>
+    <Color          x:Key="Theme.Text.Inverse">#1A1A24</Color>
+    <Color    x:Key="Theme.Text.Placeholder">#6A6A74</Color>
+    <Color x:Key="Theme.Text.PlaceholderAlt">#8A8A94</Color>
+
+
+    <!-- FIXED -->
+    <Color        x:Key="Theme.White">#FFFFFF</Color>
+    <Color        x:Key="Theme.Black">#000000</Color>
+    <Color x:Key="Theme.HoverOverlay">#24242A</Color>
+    <Color  x:Key="Theme.FocusGlow50">#50FFFFFF</Color>
+    <Color  x:Key="Theme.FocusGlow30">#30FFFFFF</Color>
+    <Color    x:Key="Theme.ThumbGlow">#18FFFFFF</Color>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BRUSHES — derived from the Colors above
+         ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- #region SEMANTIC BRUSHES -->
+    <!-- Default -->
+    <SolidColorBrush x:Key="Theme.Brush.Default.Base"            Color="{StaticResource Theme.Default.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Hover"           Color="{StaticResource Theme.Default.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Pressed"         Color="{StaticResource Theme.Default.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Lighter"         Color="{StaticResource Theme.Default.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Light"           Color="{StaticResource Theme.Default.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Dark"            Color="{StaticResource Theme.Default.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Darker"          Color="{StaticResource Theme.Default.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Subtle25"        Color="{StaticResource Theme.Default.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Subtle50"        Color="{StaticResource Theme.Default.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Default.Subtle75"        Color="{StaticResource Theme.Default.Subtle75}"/>
+
+    <!-- Primary -->
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Base"            Color="{StaticResource Theme.Primary.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Hover"           Color="{StaticResource Theme.Primary.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Pressed"         Color="{StaticResource Theme.Primary.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Lighter"         Color="{StaticResource Theme.Primary.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Light"           Color="{StaticResource Theme.Primary.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Dark"            Color="{StaticResource Theme.Primary.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Darker"          Color="{StaticResource Theme.Primary.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Subtle25"        Color="{StaticResource Theme.Primary.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Subtle50"        Color="{StaticResource Theme.Primary.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Primary.Subtle75"        Color="{StaticResource Theme.Primary.Subtle75}"/>
+
+    <!-- Secondary -->
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Base"          Color="{StaticResource Theme.Secondary.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Hover"         Color="{StaticResource Theme.Secondary.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Pressed"       Color="{StaticResource Theme.Secondary.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Lighter"       Color="{StaticResource Theme.Secondary.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Light"         Color="{StaticResource Theme.Secondary.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Dark"          Color="{StaticResource Theme.Secondary.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Darker"        Color="{StaticResource Theme.Secondary.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Subtle25"      Color="{StaticResource Theme.Secondary.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Subtle50"      Color="{StaticResource Theme.Secondary.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Secondary.Subtle75"      Color="{StaticResource Theme.Secondary.Subtle75}"/>
+
+    <!-- Tertiary -->
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Base"           Color="{StaticResource Theme.Tertiary.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Hover"          Color="{StaticResource Theme.Tertiary.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Pressed"        Color="{StaticResource Theme.Tertiary.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Lighter"        Color="{StaticResource Theme.Tertiary.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Light"          Color="{StaticResource Theme.Tertiary.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Dark"           Color="{StaticResource Theme.Tertiary.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Darker"         Color="{StaticResource Theme.Tertiary.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Subtle25"       Color="{StaticResource Theme.Tertiary.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Subtle50"       Color="{StaticResource Theme.Tertiary.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Tertiary.Subtle75"       Color="{StaticResource Theme.Tertiary.Subtle75}"/>
+
+    <!-- Success -->
+    <SolidColorBrush x:Key="Theme.Brush.Success.Base"           Color="{StaticResource Theme.Success.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Hover"          Color="{StaticResource Theme.Success.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Pressed"        Color="{StaticResource Theme.Success.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Lighter"        Color="{StaticResource Theme.Success.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Light"          Color="{StaticResource Theme.Success.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Dark"           Color="{StaticResource Theme.Success.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Darker"         Color="{StaticResource Theme.Success.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Subtle25"       Color="{StaticResource Theme.Success.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Subtle50"       Color="{StaticResource Theme.Success.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Success.Subtle75"       Color="{StaticResource Theme.Success.Subtle75}"/>
+
+    <!-- Warning -->
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Base"           Color="{StaticResource Theme.Warning.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Hover"          Color="{StaticResource Theme.Warning.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Pressed"        Color="{StaticResource Theme.Warning.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Lighter"        Color="{StaticResource Theme.Warning.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Light"          Color="{StaticResource Theme.Warning.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Dark"           Color="{StaticResource Theme.Warning.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Darker"         Color="{StaticResource Theme.Warning.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Subtle25"       Color="{StaticResource Theme.Warning.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Subtle50"       Color="{StaticResource Theme.Warning.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Warning.Subtle75"       Color="{StaticResource Theme.Warning.Subtle75}"/>
+
+    <!-- Error -->
+    <SolidColorBrush x:Key="Theme.Brush.Error.Base"             Color="{StaticResource Theme.Error.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Hover"            Color="{StaticResource Theme.Error.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Pressed"          Color="{StaticResource Theme.Error.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Lighter"          Color="{StaticResource Theme.Error.Lighter}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Light"            Color="{StaticResource Theme.Error.Light}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Dark"             Color="{StaticResource Theme.Error.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Darker"           Color="{StaticResource Theme.Error.Darker}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Subtle25"         Color="{StaticResource Theme.Error.Subtle25}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Subtle50"         Color="{StaticResource Theme.Error.Subtle50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Error.Subtle75"         Color="{StaticResource Theme.Error.Subtle75}"/>
+  <!--#endregion-->  
+  
+    <!-- Surface -->
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Darkest"        Color="{StaticResource Theme.Surface.Darkest}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Dark"           Color="{StaticResource Theme.Surface.Dark}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Mid"            Color="{StaticResource Theme.Surface.Dim}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Pressed"        Color="{StaticResource Theme.Surface.Pressed}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Base"           Color="{StaticResource Theme.Surface.Base}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Raised"         Color="{StaticResource Theme.Surface.Raised}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Hover"          Color="{StaticResource Theme.Surface.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Popup"          Color="{StaticResource Theme.Surface.Popup}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Surface.Chrome"         Color="{StaticResource Theme.Surface.Chrome}"/>
+
+    <!-- Borders -->
+    <SolidColorBrush x:Key="Theme.Brush.Border.Subtle"          Color="{StaticResource Theme.Border.Subtle}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Border.Default"         Color="{StaticResource Theme.Border.Default}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Border.Hover"           Color="{StaticResource Theme.Border.Hover}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Border.Separator"       Color="{StaticResource Theme.Border.Separator}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Border.Strong"          Color="{StaticResource Theme.Border.Strong}"/>
+    
+    <!-- Text -->
+    <SolidColorBrush x:Key="Theme.Brush.Text.Primary"           Color="{StaticResource Theme.Text.Default}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Text.Secondary"         Color="{StaticResource Theme.Text.Alternate}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Text.Tertiary"          Color="{StaticResource Theme.Text.Dim}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Text.Muted"             Color="{StaticResource Theme.Text.Muted}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Text.Placeholder"       Color="{StaticResource Theme.Text.Placeholder}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Text.PlaceholderAlt"    Color="{StaticResource Theme.Text.PlaceholderAlt}"/>
+
+    <!-- Fixed -->
+    <SolidColorBrush x:Key="Theme.Brush.White"                  Color="{StaticResource Theme.White}"/>
+    <SolidColorBrush x:Key="Theme.Brush.Black"                  Color="{StaticResource Theme.Black}"/>
+    <SolidColorBrush x:Key="Theme.Brush.HoverOverlay"           Color="{StaticResource Theme.HoverOverlay}"/>
+    <SolidColorBrush x:Key="Theme.Brush.FocusGlow50"            Color="{StaticResource Theme.FocusGlow50}"/>
+    <SolidColorBrush x:Key="Theme.Brush.FocusGlow30"            Color="{StaticResource Theme.FocusGlow30}"/>
+    <SolidColorBrush x:Key="Theme.Brush.ThumbGlow"              Color="{StaticResource Theme.ThumbGlow}"/>
+
+    <!-- Subtle top-to-bottom gradient -->
+    <LinearGradientBrush x:Key="TopazGradient.Subtle" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#0D000000" Offset="0"/>
+        <GradientStop Color="#00000000" Offset="0.3"/>
+        <GradientStop Color="#0D000000" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Diagonal gradient with color tint -->
+    <LinearGradientBrush x:Key="TopazGradient.Diagonal" StartPoint="1,0" EndPoint="-1,-3">
+        <GradientStop Color="{StaticResource Theme.Surface.Darkest}" Offset="0.00"/>
+        <GradientStop Color="{StaticResource Theme.Surface.Dark}" Offset="0.5"/>
+    </LinearGradientBrush>
+
+    <!-- Vignette effect -->
+    <RadialGradientBrush x:Key="TopazGradient.Vignette" GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.8" RadiusY="0.8">
+        <GradientStop Color="#00000000" Offset="0"/>
+        <GradientStop Color="#00000000" Offset="0.6"/>
+        <GradientStop Color="#26000000" Offset="1"/>
+    </RadialGradientBrush>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SHAPE TOKENS
+         ═══════════════════════════════════════════════════════════════ -->
+    <CornerRadius x:Key="Theme.Radius.None">0</CornerRadius>
+    <CornerRadius x:Key="Theme.Radius.XSmall">1</CornerRadius>
+    <CornerRadius x:Key="Theme.Radius.Small">3</CornerRadius>
+    <CornerRadius x:Key="Theme.Radius.Medium">4</CornerRadius>
+    <CornerRadius x:Key="Theme.Radius.Large">6</CornerRadius>
+    <CornerRadius x:Key="Theme.Radius.XLarge">8</CornerRadius>
+    <CornerRadius x:Key="Theme.Radius.Round">9</CornerRadius>
+
+    <Thickness x:Key="Theme.BorderThickness.None">0</Thickness>
+    <Thickness x:Key="Theme.BorderThickness.Button">1</Thickness>
+    <Thickness x:Key="Theme.BorderThickness.Default">1</Thickness>
+    <Thickness x:Key="Theme.BorderThickness.Thick">2</Thickness>
+    <Thickness x:Key="Theme.BorderThickness.Thicker">3</Thickness>
+    <Thickness x:Key="Theme.BorderThickness.Heavy">4</Thickness>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TYPOGRAPHY TOKENS
+         ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Font Family -->
+    <FontFamily x:Key="Theme.Font.Family">Segoe UI</FontFamily>
+
+    <!-- Font Sizes - Text -->
+    <sys:Double x:Key="Theme.Font.Size.XSmall">8</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Small">9</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Caption">10</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Body">12</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.BodyLarge">13</sys:Double>
+
+    <!-- Font Sizes - Titles -->
+    <sys:Double x:Key="Theme.Font.Size.Subtitle">14</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Title">18</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.TitleLarge">22</sys:Double>
+
+    <!-- Font Sizes - Headings -->
+    <sys:Double x:Key="Theme.Font.Size.H6">16</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.H5">18</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.H4">20</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.H3">24</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.H2">28</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.H1">32</sys:Double>
+
+
+
+</ResourceDictionary>

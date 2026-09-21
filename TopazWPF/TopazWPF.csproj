@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Fonts\JetBrainsMono-Regular.ttf" />
+	  <None Remove="Fonts\lucide.ttf" />
+	  <None Remove="Fonts\MaterialIcons-Regular.ttf" />
+	  <None Remove="Fonts\RedHatDisplay-Regular.ttf" />
+	  <None Remove="Fonts\Varela-Regular.ttf" />
+	  <None Remove="Fonts\VendSans-Regular.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Windows\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Fonts\JetBrainsMono-Regular.ttf" />
+	  <Resource Include="Fonts\lucide.ttf" />
+	  <Resource Include="Fonts\MaterialIcons-Regular.ttf" />
+	  <Resource Include="Fonts\RedHatDisplay-Regular.ttf" />
+	  <Resource Include="Fonts\Varela-Regular.ttf" />
+	  <Resource Include="Fonts\VendSans-Regular.ttf" />
+	</ItemGroup>
+</Project>

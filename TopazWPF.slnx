@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TopazTestApp/TopazWPFTestApp.csproj" />
+  <Project Path="TopazWPF/TopazWPF.csproj" />
+</Solution>

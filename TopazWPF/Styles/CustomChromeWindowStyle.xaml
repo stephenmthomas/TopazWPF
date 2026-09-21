@@ -1,0 +1,226 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TopazWPF.Windows"
+                    xmlns:themes="clr-namespace:TopazWPF.Themes">
+
+
+    <!-- Caption Bar Button Base Style -->
+    <Style x:Key="CaptionBarButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource Theme.Brush.Text.Primary}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Width" Value="46"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Root" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="{DynamicResource Theme.Brush.FocusGlow30}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="{DynamicResource Theme.Brush.FocusGlow50}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource Theme.Brush.Text.Muted}"/>
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Minimize Button Style -->
+    <Style x:Key="CaptionBarMinimizeStyle" TargetType="Button" BasedOn="{StaticResource CaptionBarButtonStyle}">
+        <Setter Property="Content" Value="&#xE921;"/>
+    </Style>
+
+    <!-- Maximize/Restore Button Style -->
+    <Style x:Key="CaptionBarMaximizeStyle" TargetType="Button" BasedOn="{StaticResource CaptionBarButtonStyle}">
+        <Setter Property="Content" Value="&#xE922;"/>
+    </Style>
+
+    <!-- Close Button Style (red hover) -->
+    <Style x:Key="CaptionBarCloseStyle" TargetType="Button" BasedOn="{StaticResource CaptionBarButtonStyle}">
+        <Setter Property="Content" Value="&#xE8BB;"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Root" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="#C42B1C"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="#A02010"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Caption Title Text Style -->
+    <Style x:Key="CaptionTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Theme.Brush.Text.Primary}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="12,0,0,0"/>
+    </Style>
+
+    <!-- Status Bar Text Style -->
+    <Style x:Key="StatusBarTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Theme.Brush.Text.Secondary}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="12,0,12,0"/>
+    </Style>
+
+    <!-- Main Window Style -->
+    <Style x:Key="CustomChromeWindowStyle" TargetType="local:CustomChromeWindow">
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="Background" Value="{DynamicResource Theme.Brush.Surface.Dark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Theme.Brush.Text.Primary}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CustomChromeWindow">
+                    <Border Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"/>
+                                <!-- Caption bar -->
+                                <RowDefinition Height="*"/>
+                                <!-- Content -->
+                                <RowDefinition>
+                                    <RowDefinition.Style>
+                                        <Style TargetType="RowDefinition">
+                                            <Setter Property="Height" Value="24"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ShowStatusBar, RelativeSource={RelativeSource AncestorType=local:CustomChromeWindow}}" Value="False">
+                                                    <Setter Property="Height" Value="0"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </RowDefinition.Style>
+                                </RowDefinition>
+                                <!-- Status bar -->
+                            </Grid.RowDefinitions>
+
+                            <!-- Caption Bar - Uses PART_ naming for OnApplyTemplate binding -->
+                            <Grid x:Name="PART_CaptionBar" Grid.Row="0" Background="{DynamicResource Theme.Brush.Surface.Chrome}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <!-- Icon -->
+                                    <ColumnDefinition Width="*"/>
+                                    <!-- Title/Custom Content -->
+                                    <ColumnDefinition Width="Auto"/>
+                                    <!-- Custom Buttons -->
+                                    <ColumnDefinition Width="Auto"/>
+                                    <!-- System Buttons -->
+                                </Grid.ColumnDefinitions>
+
+                                <!-- App Icon -->
+                                <Image Grid.Column="0" Source="{TemplateBinding Icon}" Width="16" Height="16" Margin="12,0,0,0" RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                                <!-- Custom Caption Content (Title, Navigation, etc.) -->
+                                <ContentPresenter Grid.Column="1" Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(local:CustomChromeWindow.CaptionBar)}" VerticalAlignment="Center"/>
+
+                                <!-- Custom Caption Buttons -->
+                                <ContentPresenter Grid.Column="2" Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(local:CustomChromeWindow.CaptionBarButtons)}" VerticalAlignment="Center" Margin="0,0,0,0"/>
+
+                                <!-- System Buttons (Min/Max/Close) - Use PART_ naming -->
+                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                    <Button x:Name="PART_MinimizeButton">
+                                        <Button.Style>
+                                            <Style TargetType="Button" BasedOn="{StaticResource CaptionBarMinimizeStyle}">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ShowMinimizeButton, RelativeSource={RelativeSource AncestorType=local:CustomChromeWindow}}" Value="False">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+
+                                    <Button x:Name="PART_MaximizeButton">
+                                        <Button.Style>
+                                            <Style TargetType="Button" BasedOn="{StaticResource CaptionBarMaximizeStyle}">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ShowMaximizeButton, RelativeSource={RelativeSource AncestorType=local:CustomChromeWindow}}" Value="False">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+
+                                    <Button x:Name="PART_CloseButton">
+                                        <Button.Style>
+                                            <Style TargetType="Button" BasedOn="{StaticResource CaptionBarCloseStyle}">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ShowCloseButton, RelativeSource={RelativeSource AncestorType=local:CustomChromeWindow}}" Value="False">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Window Content -->
+                            <AdornerDecorator Grid.Row="1">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </AdornerDecorator>
+
+                            <!-- Status Bar -->
+                            <Border x:Name="PART_StatusBar" Grid.Row="2" Background="{DynamicResource Theme.Brush.Surface.Chrome}" BorderBrush="{DynamicResource Theme.Brush.Border.Subtle}" BorderThickness="0,0,0,0">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ShowStatusBar, RelativeSource={RelativeSource AncestorType=local:CustomChromeWindow}}" Value="False">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <!-- Left content -->
+                                        <ColumnDefinition Width="Auto"/>
+                                        <!-- Right content -->
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Left Status Bar Content -->
+                                    <ContentPresenter Grid.Column="0" Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(local:CustomChromeWindow.StatusBarLeft)}" VerticalAlignment="Center"/>
+
+                                    <!-- Right Status Bar Content -->
+                                    <ContentPresenter Grid.Column="1" Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(local:CustomChromeWindow.StatusBarRight)}" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

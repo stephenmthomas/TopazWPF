@@ -1,0 +1,401 @@
+<topaz:CustomChromeWindow x:Class="TopazWPFTestApp.MainWindow"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:topaz="clr-namespace:TopazWPF.Windows;assembly=TopazWPF"
+                          xmlns:controls="clr-namespace:TopazWPF.Controls;assembly=TopazWPF"
+                          xmlns:themes="clr-namespace:TopazWPF.Themes;assembly=TopazWPF"
+                          Style="{StaticResource CustomChromeWindowStyle}"
+                          Title="TopazWPF Component Gallery" 
+                          Height="700" 
+                          Width="700">
+
+    <!-- Custom Caption Bar with Navigation -->
+    <topaz:CustomChromeWindow.CaptionBar>
+        <Grid Height="32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <TextBlock Text="TopazWPF Gallery" Style="{StaticResource CaptionTitleStyle}"/>
+                <CheckBox Content="Top" IsChecked="True" Margin="6,0,0,0" Click="TopMostToggle"/>
+            </StackPanel>
+
+            <StackPanel x:Name="TabSwitches" Orientation="Horizontal" Grid.Column="1">
+                <Button Content="Controls" Margin="24,0,0,0" Tag="0" Click="NavButton_Click" Style="{StaticResource CaptionBarNavButtonActiveStyle}"/>
+                <Button Content="Inputs" Margin="12,0,0,0" Tag="1" Click="NavButton_Click" Style="{StaticResource CaptionBarNavButtonStyle}"/>
+                <Button Content="Layout" Margin="12,0,0,0" Tag="2" Click="NavButton_Click" Style="{StaticResource CaptionBarNavButtonStyle}"/>
+            </StackPanel>
+        </Grid>
+
+    </topaz:CustomChromeWindow.CaptionBar>
+
+    <!-- Main Content -->
+    <Grid Background="{DynamicResource Theme.Brush.Background.Base}">
+        <TabControl x:Name="MainTabControl" Style="{StaticResource TabPageControlStyle}">
+            
+            <!-- TAB 1: Buttons, Checkboxes, Radio, Progress -->
+            <TabItem>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="32" MaxWidth="900">
+
+                        <StackPanel Margin="20" Orientation="Horizontal">
+                            <Button Content="Default Button" Margin="5"/>
+                            <Button Content="Primary Button" themes:Theme.Class="Primary" Margin="5"/>
+                            <Button Content="Danger Button" themes:Theme.Class="Danger" Margin="5"/>
+                        </StackPanel>
+
+                        <!-- Buttons - Variants -->
+                        <TextBlock Text="Buttons - Variants" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+                            <Button Content="Default" Margin="0,0,9,0"/>
+                            <Button Content="Outline" Style="{StaticResource OutlineButtonStyle}" Margin="0,0,9,0"/>
+                            <Button Content="Ghost" Style="{StaticResource GhostButtonStyle}" Margin="0,0,9,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+                            <Button Content="Primary" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,9,0"/>
+                            <Button Content="Secondary" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,9,0"/>
+                            <Button Content="Tertiary" Style="{StaticResource TertiaryButtonStyle}" Margin="0,0,9,0"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+                            <Button Content="Success" Style="{StaticResource SuccessButtonStyle}" Margin="0,0,9,0"/>
+                            <Button Content="Warning" Style="{StaticResource WarningButtonStyle}" Margin="0,0,9,0"/>
+                            <Button Content="Danger" Style="{StaticResource DangerButtonStyle}" Margin="0,0,9,0"/>
+                        </StackPanel>
+
+                        <!-- Win95 Window Border - 20x20 base unit -->
+                        <Canvas Width="20" Height="20">
+                            <!-- Black outer shadow (bottom-right) -->
+                            <Path Data="M0 19H19V0H20V20H0V19Z" Fill="#000000"/>
+
+                            <!-- Dark gray shadow (bottom-right inner) -->
+                            <Path Data="M18 18V1H19V19H0V18H18Z" Fill="#7F7F7F"/>
+
+                            <!-- Main gray fill -->
+                            <Path Data="M2 2H18V18H1V17H2V2Z" Fill="#C0C0C0"/>
+
+                            <!-- Light highlight (top-left) -->
+                            <Path Data="M0 0H19V1H18V2H2V17H1V18H0V0Z" Fill="#DFDFDF"/>
+                        </Canvas>
+
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#89B6E6"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#0F2B48"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                        </Canvas>
+
+                            <Canvas Background="Transparent" Width="16" Height="16">
+                                <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#8FDB9F"/>
+                                <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#143E1D"/>
+                                <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                                <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                            </Canvas>
+
+                            <Canvas Background="Transparent" Width="16" Height="16">
+                                <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#715C1D"/>
+                                <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#EDE1BA"/>
+                                <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                                <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                            </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#F29CA2"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#6A0D12"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#7A453D"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#F0E3E1"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#89B6E6"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#0F2B48"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#693D0F"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#F1CBA0"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#D3C1EC"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#452372"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#325B63"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#CAE0E4"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#B5C0CE"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#2B3441"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#1E394A"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#A7C6DB"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#8F0C3E"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#F9BCD3"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#715C1D"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#EDE1BA"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#000000"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#FFFFFF"/>
+                        </Canvas>
+                        <Canvas Background="Transparent" Width="16" Height="16">
+                            <Path Data="M 1,1 L 15,1 15,15 1,15 Z" Fill="#8FDB9F"/>
+                            <Path Data="M 2,2 L 14,2 14,14 2,14 Z" Fill="#143E1D"/>
+                            <Path Data="M 8,8 L 15,8 15,15 8,15 Z" Fill="#DCDCDC"/>
+                            <Path Data="M 9,9 L 14,9 14,14 9,14 Z" Fill="#1E1E1E"/>
+                        </Canvas>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Buttons - Sizes -->
+                        <TextBlock Text="Buttons - Sizes" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,24" VerticalAlignment="Center">
+                            <!-- Small button -->
+                            <Button Content="Small" Padding="12,6" FontSize="12"/>
+
+                            <!-- Medium/Default -->
+                            <Button Content="Medium"/>
+
+                            <!-- Large button -->
+                            <Button Content="Large" Padding="18,12" FontSize="16"/>
+                        </StackPanel>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Buttons - States -->
+                        <TextBlock Text="Buttons - States" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+                            <Button Content="Normal" Margin="0,0,9,0"/>
+                            <Button Content="Disabled" IsEnabled="False" Margin="0,0,9,0"/>
+                            <Button Content="Primary Disabled" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="False" Margin="0,0,9,0"/>
+                        </StackPanel>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Checkboxes -->
+                        <TextBlock Text="Checkboxes" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <StackPanel Margin="0,0,0,24">
+                            <CheckBox Content="Option 1" IsChecked="True" Margin="0,0,0,8"/>
+                            <CheckBox Content="Option 2" Margin="0,0,0,8"/>
+                            <CheckBox Content="Option 3" Margin="0,0,0,8"/>
+                            <CheckBox Content="Disabled" IsEnabled="False" IsChecked="True"/>
+                        </StackPanel>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Radio Buttons -->
+                        <TextBlock Text="Radio Buttons" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <StackPanel Margin="0,0,0,24">
+                            <RadioButton Content="Option A" GroupName="Demo" IsChecked="True" Margin="0,0,0,8"/>
+                            <RadioButton Content="Option B" GroupName="Demo" Margin="0,0,0,8"/>
+                            <RadioButton Content="Option C" GroupName="Demo" Margin="0,0,0,8"/>
+                            <RadioButton Content="Disabled" GroupName="Demo" IsEnabled="False"/>
+                        </StackPanel>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Progress Bar -->
+                        <TextBlock Text="Progress Bar" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <ProgressBar Value="65" Maximum="100" Height="6" Margin="0,0,0,24"/>
+                        <ProgressBar Style="{StaticResource SecondaryProgressBarStyle}" Value="75" Maximum="100" Height="6" Margin="0,0,0,24"/>
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Sliders -->
+                        <TextBlock Text="Sliders" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <StackPanel Margin="0,0,0,24">
+                            <TextBlock Text="Standard Slider" Margin="0,0,0,8"/>
+                            <Slider Minimum="0" Maximum="100" Value="50" Margin="0,0,0,16"/>
+                            
+                            <TextBlock Text="Range Slider" Margin="0,0,0,8"/>
+                            <controls:RangeSlider Minimum="0" Maximum="100" RangeMin="25" RangeMax="75" Height="24"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- TAB 2: Text Inputs, ComboBox, ListBox -->
+            <TabItem>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="32" MaxWidth="900">
+
+                        <!-- TextBox -->
+                        <TextBlock Text="Text Inputs" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <TextBox Text="Default TextBox" Margin="0,0,0,6"/>
+                        <TextBox Text="" Margin="0,0,0,8">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{DynamicResource Theme.Brush.Background.Base}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <TextBox Text="Read-only TextBox" IsReadOnly="True" Margin="0,0,0,8"/>
+                        <TextBox Text="Disabled TextBox" IsEnabled="False" Margin="0,0,0,24"/>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- ComboBox -->
+                        <TextBlock Text="ComboBox" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <ComboBox SelectedIndex="0" Margin="0,0,0,24">
+                            <ComboBoxItem Content="Option 1"/>
+                            <ComboBoxItem Content="Option 2"/>
+                            <ComboBoxItem Content="Option 3"/>
+                            <ComboBoxItem Content="Option 4"/>
+                        </ComboBox>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- ListBox -->
+                        <TextBlock Text="ListBox" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <ListBox Height="150" Margin="0,0,0,24">
+                            <ListBoxItem Content="List Item 1"/>
+                            <ListBoxItem Content="List Item 2" IsSelected="True"/>
+                            <ListBoxItem Content="List Item 3"/>
+                            <ListBoxItem Content="List Item 4"/>
+                            <ListBoxItem Content="List Item 5"/>
+                        </ListBox>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- ListView -->
+                        <TextBlock Text="ListView" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <ListView Height="200" Margin="0,0,0,24">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Value" Width="120" DisplayMemberBinding="{Binding Value}"/>
+                                    <GridViewColumn Header="Status" Width="120" DisplayMemberBinding="{Binding Status}"/>
+                                </GridView>
+                            </ListView.View>
+                            <ListViewItem Content="Row 1"/>
+                            <ListViewItem Content="Row 2"/>
+                            <ListViewItem Content="Row 3"/>
+                        </ListView>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- TAB 3: Layout Controls -->
+            <TabItem>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="32" MaxWidth="900">
+
+                        <!-- GroupBox -->
+                        <TextBlock Text="GroupBox" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <GroupBox Header="Settings Group" Margin="0,0,0,24">
+                            <StackPanel Margin="12">
+                                <CheckBox Content="Enable feature A" Margin="0,0,0,8"/>
+                                <CheckBox Content="Enable feature B" IsChecked="True" Margin="0,0,0,8"/>
+                                <CheckBox Content="Enable feature C"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Expander -->
+                        <TextBlock Text="Expander" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <Expander Header="Advanced Options" IsExpanded="True" Margin="0,0,0,8">
+                            <StackPanel Margin="12">
+                                <TextBlock Text="These are advanced settings that are normally hidden." TextWrapping="Wrap" Margin="0,0,0,8"/>
+                                <Slider Minimum="0" Maximum="100" Value="75"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="More Settings" Margin="0,0,0,24">
+                            <TextBlock Text="Additional content here..." Margin="12"/>
+                        </Expander>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- TabControl (nested) -->
+                        <TextBlock Text="TabControl" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <TabControl Height="200" Margin="0,0,0,24">
+                            <TabItem Header="Tab 1">
+                                <TextBlock Text="Content for Tab 1" Margin="16"/>
+                            </TabItem>
+                            <TabItem Header="Tab 2">
+                                <TextBlock Text="Content for Tab 2" Margin="16"/>
+                            </TabItem>
+                            <TabItem Header="Tab 3" IsEnabled="False">
+                                <TextBlock Text="Disabled Tab" Margin="16"/>
+                            </TabItem>
+                        </TabControl>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- TreeView -->
+                        <TextBlock Text="TreeView" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <TreeView Height="200" Margin="0,0,0,24">
+                            <TreeViewItem Header="Root Item 1" IsExpanded="True">
+                                <TreeViewItem Header="Child 1.1">
+                                    <TreeViewItem Header="Grandchild 1.1.1"/>
+                                    <TreeViewItem Header="Grandchild 1.1.2"/>
+                                </TreeViewItem>
+                                <TreeViewItem Header="Child 1.2"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Root Item 2" IsExpanded="True">
+                                <TreeViewItem Header="Child 2.1"/>
+                                <TreeViewItem Header="Child 2.2"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Root Item 3"/>
+                        </TreeView>
+
+                        <Separator Margin="0,0,0,24"/>
+
+                        <!-- Context Menu Demo -->
+                        <TextBlock Text="Context Menu" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                        <Border Background="{DynamicResource Theme.Brush.Background.Chrome}" 
+                                Padding="24" 
+                                Margin="0,0,0,24">
+                            <TextBlock Text="Right-click here for context menu">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+                                        <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+                                        <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
+                                        <Separator/>
+                                        <MenuItem Header="More Options">
+                                            <MenuItem Header="Submenu Item 1"/>
+                                            <MenuItem Header="Submenu Item 2"/>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+
+</topaz:CustomChromeWindow>
