@@ -1,19 +1,25 @@
 # TopazWPF
 
-A dark-themed WPF control library and custom window chrome framework for .NET 8. Zero NuGet dependencies.
+A dark-themed WPF control library and custom window chrome framework for .NET 8. I developed this in parallel to my first ever WPF projects, as I found the default UI lacking.  Current state is acceptable for personal projects, but it is still a WIP. 
 
-TopazWPF provides a complete set of styled controls, a semantic token-based theme system, and a custom borderless window with Mica backdrop, DWM rounded corners, and native resize handling — all through standard WPF project references.
+Zero NuGet dependencies.
+
+Provides a complete set of styled controls, a semantic token-based theme system [work in progress], and a custom borderless window with Mica backdrop, DWM rounded corners, and native resize handling — all through standard WPF project references.
 
 Example Photos below...
 
 ## Features
 
 - **CustomChromeWindow** — Borderless window base class with Mica/Acrylic backdrop, DWM dark mode, rounded corners, configurable caption bar, status bar, and native edge resize via `WM_NCHITTEST`
-- **Semantic theme system** — All controls reference `DynamicResource` tokens (`Theme.Accent.Base`, `Theme.Brush.Surface.Dark`, etc.) so swapping one XAML dictionary re-skins the entire app
+- **Semantic theme system** — WIP. All controls reference `DynamicResource` tokens (`Theme.Accent.Base`, `Theme.Brush.Surface.Dark`, etc.) so swapping one XAML dictionary re-skins the entire app
 - **ThemeManager** — Runtime theme switching, dynamic accent color generation with auto-computed hover/pressed/subtle variants via hue rotation
 - **20+ styled controls** — Button (Primary, Secondary, Tertiary, Danger, Success, Warning, Outline, Ghost), CheckBox, RadioButton, ComboBox, TextBox, Slider, ProgressBar, TabControl, ListBox, ListView, TreeView, GroupBox, Expander, ContextMenu, ScrollBar
 - **Custom controls** — `RangeSlider` (two-thumb min/max), `RangeSeeker` (three-thumb with playhead)
 - **Bundled fonts** — JetBrains Mono, Red Hat Display, Lucide icons, Material Icons
+
+### IMPORTANT NOTE
+
+There is considerable bloat with some of the theme system and button design - this is due to prototyping and being a bit indecisive on how I wanted to set up the architecture for the theme system.  Again... WIP.
 
 ## Quick Start
 
